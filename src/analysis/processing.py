@@ -2,7 +2,8 @@ import mne
 import pandas as pd
 import tools.helpers
 import os
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
+from mne.preprocessing import ICA 
 
 from config import Config
 configObj = Config()
@@ -39,8 +40,14 @@ def preprocessing(raw):
 
     raw_filtered =  raw_filtered.notch_filter(freqs=notch_freqs,
                                              picks= data_channels)
+    
+    montage = tools.helpers.getMontage()
 
-    return  raw_filtered
+    raw_filtered.set_montage(montage)
+
+    raw_artifact_corrected = applyICA(raw_filtered)
+
+    return  raw_artifact_corrected
 
 
 def eventEpochdata(raw):
@@ -105,8 +112,8 @@ def eventEpocshByBlocks(raw):
     metadata_tmin, metadata_tmax = tmin, tmax
 
     row_events = [
-    'visual/image_display/onset/stimulus/non_freq',
-    'visual/image_display/onset/stimulus/freq',
+    'auditory/onset/stimulus/non_freq',
+    'auditory/onset/stimulus/freq',
     'visual/image_display/onset/instruction/set_1/instruction_1'
     ]
 
@@ -118,13 +125,13 @@ def eventEpocshByBlocks(raw):
     tmin=metadata_tmin,
     tmax=metadata_tmax,
     sfreq=raw.info["sfreq"],
-    keep_first= ['visual/image_display/onset/stimulus']
+    keep_first= ['auditory/onset/stimulus']
     )
 
     metadata["oddball"] = False
     metadata["control"] = False
-    metadata.loc[ metadata['first_visual/image_display/onset/stimulus'] == 'non_freq', "oddball" ] = True 
-    metadata.loc[ metadata['first_visual/image_display/onset/stimulus'] == 'freq', "control" ] = True 
+    metadata.loc[ metadata['first_auditory/onset/stimulus'] == 'non_freq', "oddball" ] = True 
+    metadata.loc[ metadata['first_auditory/onset/stimulus'] == 'freq', "control" ] = True 
 
     mask = metadata['visual/image_display/onset/instruction/set_1/instruction_1'] == 0.0
 
@@ -177,3 +184,45 @@ def getERP(evokeds, roi, ci, invert = False):
     ax.set_ylabel("V")
 
     plt.show()
+
+
+def getERPMontage(evokeds):
+    mne.viz.plot_compare_evokeds(
+    evokeds,
+    picks="eeg",
+    ci = 0.95,
+    styles = {"oddball": {"color" :'red'}, 
+                                        "control":{"color": 'blue'}}, 
+    axes="topo",
+    ylim = dict(eeg=[-10e-6, 10e-6]), 
+)    
+    
+
+
+def applyICA(raw):
+    ica = ICA(n_components=15, max_iter="auto", random_state=97)
+    ica.fit(raw)
+
+    ica.exclude = []
+    num_excl = 0
+    max_ic = 2
+    z_thresh = 3.5
+    z_step = .05
+
+    while num_excl < max_ic:
+        eog_indices, eog_scores = ica.find_bads_eog(raw,
+                                                ch_name=['1L', '1R', '2LC', '2RC'], 
+                                                threshold=z_thresh
+                                                )
+        num_excl = len(eog_indices)
+        z_thresh -= z_step # won't impact things if num_excl is ≥ n_max_eog 
+
+# assign the bad EOG components to the ICA.exclude attribute so they can be removed later
+    ica.exclude = eog_indices
+    ica.apply(raw)
+
+    return raw
+
+
+
+

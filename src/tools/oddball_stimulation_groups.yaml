@@ -11,10 +11,12 @@ visual:
           instruction_1: OVTK_StimulationId_Label_B1
         set_2:
           instruction_0: OVTK_StimulationId_Label_B2
-      stimulus:
-        non_freq: OVTK_StimulationId_Label_01
-        freq: OVTK_StimulationId_Label_02
     clear_image: OVTK_StimulationId_VisualStimulationStop
+auditory:
+  onset:
+    stimulus:
+      non_freq: OVTK_StimulationId_Label_01
+      freq: OVTK_StimulationId_Label_02
 keyboard:
   button_released: OVTK_StimulationId_Label_FF
   button_pressed:
