@@ -9,9 +9,12 @@ stimcodes = {
         set_0 ={
         OVTK_StimulationId_Label_A0,
         OVTK_StimulationId_Label_A1},
-        set_1 ={ blk_strt = OVTK_StimulationId_Label_B0,
+        set_1 ={
+            freq =OVTK_StimulationId_Label_A2,
+            non_freq = OVTK_StimulationId_Label_A3},
+        set_2 ={ blk_strt = OVTK_StimulationId_Label_B0,
         blk_end = OVTK_StimulationId_Label_B1},
-        set_2 ={
+        set_3 ={
         exp_end = OVTK_StimulationId_Label_B2}
     },
     sounds={

@@ -389,6 +389,36 @@
 					<Value>OVTK_StimulationId_Label_06</Value>
 					<Modifiability>false</Modifiability>
 				</Setting>
+				<Setting>
+					<Identifier>(0x1830a2e7, 0xc8dd96a5)</Identifier>
+					<TypeIdentifier>(0x330306dd, 0x74a95f98)</TypeIdentifier>
+					<Name>Cue Image 7</Name>
+					<DefaultValue>${Path_Data}/plugins/simple-visualization/p300-magic-card/07.png</DefaultValue>
+					<Value>${Path_Data}/plugins/simple-visualization/p300-magic-card/07.png</Value>
+					<Modifiability>false</Modifiability>
+				</Setting>
+				<Setting>
+					<TypeIdentifier>(0x2c132d6e, 0x44ab0d97)</TypeIdentifier>
+					<Name>Stimulation 7</Name>
+					<DefaultValue>OVTK_StimulationId_Label_07</DefaultValue>
+					<Value>OVTK_StimulationId_Label_07</Value>
+					<Modifiability>false</Modifiability>
+				</Setting>
+				<Setting>
+					<Identifier>(0xbb742915, 0x71d745e6)</Identifier>
+					<TypeIdentifier>(0x330306dd, 0x74a95f98)</TypeIdentifier>
+					<Name>Cue Image 8</Name>
+					<DefaultValue>${Path_Data}/plugins/simple-visualization/p300-magic-card/08.png</DefaultValue>
+					<Value>${Path_Data}/plugins/simple-visualization/p300-magic-card/08.png</Value>
+					<Modifiability>false</Modifiability>
+				</Setting>
+				<Setting>
+					<TypeIdentifier>(0x2c132d6e, 0x44ab0d97)</TypeIdentifier>
+					<Name>Stimulation 8</Name>
+					<DefaultValue>OVTK_StimulationId_Label_08</DefaultValue>
+					<Value>OVTK_StimulationId_Label_08</Value>
+					<Modifiability>false</Modifiability>
+				</Setting>
 			</Settings>
 			<Attributes>
 				<Attribute>

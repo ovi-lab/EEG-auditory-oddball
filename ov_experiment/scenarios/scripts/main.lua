@@ -5,7 +5,7 @@ function initialize(box)
     local num_trials = 40
     local num_blocks = 3
     local durations = {
-        ISI = { 0.300, 0.400, 0.500 },           --s
+        ISI = { 0.300, 0.400, 0.500 },               --s
         ITI = { 0.800, 0.900, 1.000, 1.100, 1.200 }, --s, these are the set of possible ITIs
     }
 
@@ -24,20 +24,19 @@ function initialize(box)
                 table.insert(trials, stimcodes.sounds.freq)
             else
                 table.insert(trials, stimcodes.sounds.non_freq)
-                odd_count  = odd_count + 1
+                odd_count = odd_count + 1
             end
-            table.insert(ITI, durations.ITI[k % #durations.ITI +1])
-            table.insert(ISI, durations.ISI[k % #durations.ISI +1])
+            table.insert(ITI, durations.ITI[k % #durations.ITI + 1])
+            table.insert(ISI, durations.ISI[k % #durations.ISI + 1])
         end
-        box:log('Warning',tostring(odd_count))
+        box:log('Warning', tostring(odd_count))
         table.insert(blocks, trials)
     end
 
-     -- shuffle the ITIs
+    -- shuffle the ITIs
     ITI = shuffle_arr(ITI)
-     -- shuffle the ISIs
+    -- shuffle the ISIs
     ISI = shuffle_arr(ISI)
-
 end
 
 -- function show_instructions(box, stim, t)
@@ -58,8 +57,33 @@ function process(box)
         t = wait_for_continue(box)
     end
 
+    -- todo: add a function
+
+    box:send_stimulation(1, stimcodes.instructions.set_1.freq, t, 0)
+    t = t + 0.5
+
+    -- play the stimulus
+    box:send_stimulation(1, stimcodes.sounds.freq, t, 0)
+    t = t + 0.5
+    -- stop the stimulus
+    box:send_stimulation(1, stimcodes.sounds.stop, t, 0)
+    t = t + 0.5
+
+
+
+    box:send_stimulation(1, stimcodes.instructions.set_1.non_freq, t, 0)
+    t = t + 0.5
+    -- play the stimulus
+    box:send_stimulation(1, stimcodes.sounds.non_freq, t, 0)
+    t = t + 0.5
+    -- stop the stimulus
+    box:send_stimulation(1, stimcodes.sounds.stop, t, 0)
+    t = t + 0.5
+
+
+
     -- Display the second set of instructions
-    for k, stim in ipairs(stimcodes.instructions.set_1) do
+    for k, stim in ipairs(stimcodes.instructions.set_2) do
         box:send_stimulation(1, stim, t, 0)
         t = wait_for_continue(box)
     end
@@ -68,7 +92,7 @@ function process(box)
 
 
     for b_t, trials in ipairs(blocks) do
-        box:send_stimulation(1, stimcodes.instructions.set_1.blk_strt, t, 0)
+        box:send_stimulation(1, stimcodes.instructions.set_2.blk_strt, t, 0)
         t = wait_for_continue(box)
 
         -- Iterate through trials
@@ -79,14 +103,14 @@ function process(box)
             -- the trial
 
 
-            interval_index =  (b_t - 1) * (#trials) + k_t
+            interval_index = (b_t - 1) * (#trials) + k_t
 
             -- box:log('Warning', tostring(interval_index))
 
             -- Indicate start of trial
             box:send_stimulation(1, stimcodes.trial_start, t, 0)
 
-                
+
             t = t + ISI[interval_index]
 
             -- play the stimulus
@@ -94,7 +118,7 @@ function process(box)
             t = t + 0.2
             -- stop the stimulus
             box:send_stimulation(1, stimcodes.sounds.stop, t, 0)
-       
+
             t = t + ITI[interval_index] - 0.2
             -- box:send_stimulation(1, stimcodes.clear_screen, t, 0)
 
@@ -104,12 +128,12 @@ function process(box)
 
         box:send_stimulation(1, stimcodes.clear_screen, t, 0)
         t = t + 0.05
-        box:send_stimulation(1, stimcodes.instructions.set_1.blk_end, t, 0)
+        box:send_stimulation(1, stimcodes.instructions.set_2.blk_end, t, 0)
         t = wait_for_continue(box)
     end
 
     -- end the experiment
-    box:send_stimulation(1,  stimcodes.instructions.set_2.exp_end, t, 0)
+    box:send_stimulation(1, stimcodes.instructions.set_3.exp_end, t, 0)
     t = t + 1
 
     box:send_stimulation(1, stimcodes.experiment_stop, t, 0)

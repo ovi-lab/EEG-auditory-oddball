@@ -10,6 +10,14 @@
 	<SettingValue>OVTK_StimulationId_Label_A0</SettingValue>
     <SettingValue>${Player_ScenarioDirectory}/assets/instructions_s0_1.png</SettingValue>
 	<SettingValue>OVTK_StimulationId_Label_A1</SettingValue>
+
+    <SettingValue>${Player_ScenarioDirectory}/assets/instructions_s0_2.png</SettingValue>
+	<SettingValue>OVTK_StimulationId_Label_A2</SettingValue>
+    <SettingValue>${Player_ScenarioDirectory}/assets/instructions_s0_3.png</SettingValue>
+	<SettingValue>OVTK_StimulationId_Label_A3</SettingValue>
+
+
+
     <SettingValue>${Player_ScenarioDirectory}/assets/instructions_s1_0.png</SettingValue>
 	<SettingValue>OVTK_StimulationId_Label_B0</SettingValue>
     <SettingValue>${Player_ScenarioDirectory}/assets/instructions_s1_1.png</SettingValue>
