@@ -67,7 +67,8 @@ function process(box)
     t = t + 0.5
     -- stop the stimulus
     box:send_stimulation(1, stimcodes.sounds.stop, t, 0)
-    t = t + 0.5
+    t = t + 0.2
+    t = wait_for_continue(box)
 
 
 
@@ -78,7 +79,8 @@ function process(box)
     t = t + 0.5
     -- stop the stimulus
     box:send_stimulation(1, stimcodes.sounds.stop, t, 0)
-    t = t + 0.5
+    t = t + 0.2
+    t = wait_for_continue(box)
 
 
 

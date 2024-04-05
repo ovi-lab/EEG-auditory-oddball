@@ -80,9 +80,13 @@ def makeInstructions(dirName, **kwargs):
             ],
             [
                 "This is the frequent sound.",
+                 "\n",
+                "Press the spacebar to continue."
             ],
              [
                 "This is the odd sound.",
+                 "\n",
+                "Press the spacebar to continue."
             ]
         ],
         [
