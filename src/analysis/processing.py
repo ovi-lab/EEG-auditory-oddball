@@ -32,8 +32,8 @@ def preprocessing(raw):
 
     raw = raw.pick(data_channels)
 
-    # #set average mastoid ref
-    # raw.set_eeg_reference(ref_channels=['3LD', '3RD'])
+    # # #set average mastoid ref
+    raw.set_eeg_reference(ref_channels=['3LD', '3RD'])
 
     l_freq = configss['l_freq'] if configss['l_freq'] is not None else None 
     h_freq = configss['h_freq'] if configss['h_freq'] is not None else None 
