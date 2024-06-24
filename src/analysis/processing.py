@@ -16,6 +16,8 @@ def loadData(partipantId):
     partipant_data_path =  participant_name + '/' + participant_name +'.gdf'
     path = os.path.join(configss['root'], configss['data_dir'] , partipant_data_path ) 
     raw  = mne.io.read_raw_gdf(path)
+    # scales everything to volts from microvolts
+    # raw = raw.apply_function(lambda x: x * 1e6)
     return raw
 
 def preprocessing(raw):
@@ -29,6 +31,9 @@ def preprocessing(raw):
         data_channels = configss['target_channels']
 
     raw = raw.pick(data_channels)
+
+    # #set average mastoid ref
+    # raw.set_eeg_reference(ref_channels=['3LD', '3RD'])
 
     l_freq = configss['l_freq'] if configss['l_freq'] is not None else None 
     h_freq = configss['h_freq'] if configss['h_freq'] is not None else None 
@@ -171,13 +176,13 @@ def eventEpocshByBlocks(raw):
 # CI: confidence interval
 # roi: interested channels 
 # evokeds : mne evok signals 
-def getERP(evokeds, roi, ci, invert = False):
+def getERP(evokeds, roi, ci, invert = False, vlines = [0.0]):
     #plot evokeds at 0.9 CI
     fig, ax = plt.subplots()
     mne.viz.plot_compare_evokeds(evokeds, picks= roi, ci = ci , 
                                 styles = {"oddball": {"color" :'red'}, 
                                         "control":{"color": 'blue'}}, 
-                                    show =False, axes = ax )
+                                    show =False, axes = ax , vlines = vlines)
     if(invert): 
         ax.invert_yaxis()
     
