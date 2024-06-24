@@ -23,14 +23,22 @@ def loadData(partipantId):
 def preprocessing(raw):
 
     raw = raw.resample(sfreq=250)
-
+    # print(raw.info["bads"])
     # remove unnecessary channels
     data_channels = [x for x in raw.ch_names if x not in 
                      configss['non_data_channels']]
     if configss['target_channels'] is not None:
-        data_channels = configss['target_channels']
+        data_channels = configss['target_channels']   
 
     raw = raw.pick(data_channels)
+
+    montage = tools.helpers.getMontage()
+
+    raw.set_montage(montage)
+
+    raw.info['bads'] = configss['bad_channels']   
+
+    raw = raw.interpolate_bads(reset_bads=True)
 
     # # #set average mastoid ref
     raw.set_eeg_reference(ref_channels=['3LD', '3RD'])
@@ -45,10 +53,7 @@ def preprocessing(raw):
 
     raw_filtered =  raw_filtered.notch_filter(freqs=notch_freqs,
                                              picks= data_channels)
-    
-    montage = tools.helpers.getMontage()
 
-    raw_filtered.set_montage(montage)
 
     raw_artifact_corrected = applyICA(raw_filtered)
 

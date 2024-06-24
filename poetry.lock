@@ -161,6 +161,29 @@ tests-mypy = ["mypy (>=1.6)", "pytest-mypy-plugins"]
 tests-no-zope = ["attrs[tests-mypy]", "cloudpickle", "hypothesis", "pympler", "pytest (>=4.3.0)", "pytest-xdist[psutil]"]
 
 [[package]]
+name = "autoreject"
+version = "0.4.3"
+description = "Automated rejection and repair of epochs in M/EEG."
+optional = false
+python-versions = "~=3.8"
+files = [
+    {file = "autoreject-0.4.3-py3-none-any.whl", hash = "sha256:a094bebeaea40572f479b2b489c14c54a0be4d57ae7f51ea269c754d2433f9c1"},
+    {file = "autoreject-0.4.3.tar.gz", hash = "sha256:bd977ea3c88dc68550fbd5dbb98515b3b811907ba78afe8e412632edde6c8fc5"},
+]
+
+[package.dependencies]
+joblib = "*"
+matplotlib = ">=3.4.0"
+mne = {version = ">=1.0", extras = ["hdf5"]}
+numpy = ">=1.20.2"
+scikit-learn = ">=0.24.2"
+scipy = ">=1.6.3"
+
+[package.extras]
+doc = ["cython", "numpydoc", "openneuro-py (>=2021.10.1)", "pillow", "pydata-sphinx-theme", "sphinx", "sphinx-copybutton", "sphinx-gallery", "sphinx-github-role"]
+test = ["PyQt6", "check-manifest", "flake8", "importlib-resources", "mne-qt-browser", "pytest", "pytest-cov", "pytest-sugar"]
+
+[[package]]
 name = "babel"
 version = "2.14.0"
 description = "Internationalization utilities"
@@ -758,6 +781,54 @@ files = [
     {file = "fqdn-1.5.1-py3-none-any.whl", hash = "sha256:3a179af3761e4df6eb2e026ff9e1a3033d3587bf980a0b1b2e1e5d08d7358014"},
     {file = "fqdn-1.5.1.tar.gz", hash = "sha256:105ed3677e767fb5ca086a0c1f4bb66ebc3c100be518f0e0d755d9eae164d89f"},
 ]
+
+[[package]]
+name = "h5io"
+version = "0.2.3"
+description = "Python Objects Onto HDF5"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "h5io-0.2.3-py3-none-any.whl", hash = "sha256:6be16f4e8dd0711d012e2465d363cc7026dc87a55c440c67db02532f47a4c690"},
+    {file = "h5io-0.2.3.tar.gz", hash = "sha256:b536a1cd3b02e82d9ab568618fdb1d1e08642b7327f52e3521167e369e05f509"},
+]
+
+[package.dependencies]
+h5py = "*"
+numpy = "*"
+
+[[package]]
+name = "h5py"
+version = "3.11.0"
+description = "Read and write HDF5 files from Python"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "h5py-3.11.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:1625fd24ad6cfc9c1ccd44a66dac2396e7ee74940776792772819fc69f3a3731"},
+    {file = "h5py-3.11.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:c072655ad1d5fe9ef462445d3e77a8166cbfa5e599045f8aa3c19b75315f10e5"},
+    {file = "h5py-3.11.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:77b19a40788e3e362b54af4dcf9e6fde59ca016db2c61360aa30b47c7b7cef00"},
+    {file = "h5py-3.11.0-cp310-cp310-win_amd64.whl", hash = "sha256:ef4e2f338fc763f50a8113890f455e1a70acd42a4d083370ceb80c463d803972"},
+    {file = "h5py-3.11.0-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:bbd732a08187a9e2a6ecf9e8af713f1d68256ee0f7c8b652a32795670fb481ba"},
+    {file = "h5py-3.11.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:75bd7b3d93fbeee40860fd70cdc88df4464e06b70a5ad9ce1446f5f32eb84007"},
+    {file = "h5py-3.11.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:52c416f8eb0daae39dabe71415cb531f95dce2d81e1f61a74537a50c63b28ab3"},
+    {file = "h5py-3.11.0-cp311-cp311-win_amd64.whl", hash = "sha256:083e0329ae534a264940d6513f47f5ada617da536d8dccbafc3026aefc33c90e"},
+    {file = "h5py-3.11.0-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:a76cae64080210389a571c7d13c94a1a6cf8cb75153044fd1f822a962c97aeab"},
+    {file = "h5py-3.11.0-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:f3736fe21da2b7d8a13fe8fe415f1272d2a1ccdeff4849c1421d2fb30fd533bc"},
+    {file = "h5py-3.11.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:aa6ae84a14103e8dc19266ef4c3e5d7c00b68f21d07f2966f0ca7bdb6c2761fb"},
+    {file = "h5py-3.11.0-cp312-cp312-win_amd64.whl", hash = "sha256:21dbdc5343f53b2e25404673c4f00a3335aef25521bd5fa8c707ec3833934892"},
+    {file = "h5py-3.11.0-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:754c0c2e373d13d6309f408325343b642eb0f40f1a6ad21779cfa9502209e150"},
+    {file = "h5py-3.11.0-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:731839240c59ba219d4cb3bc5880d438248533366f102402cfa0621b71796b62"},
+    {file = "h5py-3.11.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:8ec9df3dd2018904c4cc06331951e274f3f3fd091e6d6cc350aaa90fa9b42a76"},
+    {file = "h5py-3.11.0-cp38-cp38-win_amd64.whl", hash = "sha256:55106b04e2c83dfb73dc8732e9abad69d83a436b5b82b773481d95d17b9685e1"},
+    {file = "h5py-3.11.0-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:f4e025e852754ca833401777c25888acb96889ee2c27e7e629a19aee288833f0"},
+    {file = "h5py-3.11.0-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:6c4b760082626120031d7902cd983d8c1f424cdba2809f1067511ef283629d4b"},
+    {file = "h5py-3.11.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:67462d0669f8f5459529de179f7771bd697389fcb3faab54d63bf788599a48ea"},
+    {file = "h5py-3.11.0-cp39-cp39-win_amd64.whl", hash = "sha256:d9c944d364688f827dc889cf83f1fca311caf4fa50b19f009d1f2b525edd33a3"},
+    {file = "h5py-3.11.0.tar.gz", hash = "sha256:7b7e8f78072a2edec87c9836f25f34203fd492a4475709a18b417a33cfb21fa9"},
+]
+
+[package.dependencies]
+numpy = ">=1.17.3"
 
 [[package]]
 name = "idna"
@@ -1599,6 +1670,7 @@ files = [
 [package.dependencies]
 decorator = "*"
 defusedxml = "*"
+h5io = {version = "*", optional = true, markers = "extra == \"hdf5\""}
 importlib-resources = {version = ">=5.10.2", markers = "python_version < \"3.9\""}
 jinja2 = "*"
 lazy-loader = ">=0.3"
@@ -1606,6 +1678,7 @@ matplotlib = ">=3.5.0"
 numpy = ">=1.21.2"
 packaging = "*"
 pooch = ">=1.5"
+pymatreader = {version = "*", optional = true, markers = "extra == \"hdf5\""}
 scipy = ">=1.7.1"
 tqdm = "*"
 
@@ -2182,6 +2255,23 @@ plugins = ["importlib-metadata"]
 windows-terminal = ["colorama (>=0.4.6)"]
 
 [[package]]
+name = "pymatreader"
+version = "0.0.32"
+description = "Convenient reader for Matlab mat files"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pymatreader-0.0.32-py3-none-any.whl", hash = "sha256:30fbe85ef919bcd7707fa9b7dfaf90f2d26d59ff1de84ab425a1a0a7e85a6f8a"},
+    {file = "pymatreader-0.0.32.tar.gz", hash = "sha256:34a5b4812635c98d3e5776fc21cd7f85b045784539363674d178dfb1158a617f"},
+]
+
+[package.dependencies]
+h5py = "*"
+numpy = "*"
+scipy = "!=1.7.0"
+xmltodict = "*"
+
+[[package]]
 name = "pyparsing"
 version = "3.1.1"
 description = "pyparsing module - Classes and methods to define and execute parsing grammars"
@@ -2194,6 +2284,23 @@ files = [
 
 [package.extras]
 diagrams = ["jinja2", "railroad-diagrams"]
+
+[[package]]
+name = "pyprep"
+version = "0.4.3"
+description = "A Python implementation of the preprocessing pipeline (PREP) for EEG data."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "pyprep-0.4.3-py2.py3-none-any.whl", hash = "sha256:3150aa7ce8a7134ffe0c884fd9a630a9d284a06768c08e054f3cbfd233cb9873"},
+    {file = "pyprep-0.4.3.tar.gz", hash = "sha256:4e7713f214bdcbb23f1c1f1eb20602e13731961bd33d1b5fc78a1c38d02fbac0"},
+]
+
+[package.dependencies]
+mne = ">=1.3.0"
+numpy = ">=1.20.2"
+psutil = ">=5.4.3"
+scipy = ">=1.6.3"
 
 [[package]]
 name = "pyqt6"
@@ -3117,6 +3224,17 @@ pyspark = ["cloudpickle", "pyspark", "scikit-learn"]
 scikit-learn = ["scikit-learn"]
 
 [[package]]
+name = "xmltodict"
+version = "0.13.0"
+description = "Makes working with XML feel like you are working with JSON"
+optional = false
+python-versions = ">=3.4"
+files = [
+    {file = "xmltodict-0.13.0-py2.py3-none-any.whl", hash = "sha256:aa89e8fd76320154a40d19a0df04a4695fb9dc5ba977cbb68ab3e4eb225e7852"},
+    {file = "xmltodict-0.13.0.tar.gz", hash = "sha256:341595a488e3e01a85a9d8911d8912fd922ede5fecc4dce437eb4b6c8d037e56"},
+]
+
+[[package]]
 name = "zipp"
 version = "3.17.0"
 description = "Backport of pathlib-compatible object wrapper for zip files"
@@ -3134,4 +3252,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "8eb5be589c754aa847d7c211236188374b2cc44a018f0434ed10b2f4695bb79b"
+content-hash = "f923fe725bfc9e9cdef84cb4c21e722b2f10dc086260e1ce6284dc2e6e48e011"

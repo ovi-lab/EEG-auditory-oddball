@@ -21,10 +21,15 @@ non_data_channels:
   - SC
   - 11L
   - 11R
+
+bad_channels: 
   - 1LD
   - 1RD
   - 1RB
   - 1LB
+  - 1L
+  - 1Z
+  - 1R
 
 
 notch_freqs: 60

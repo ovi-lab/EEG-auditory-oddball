@@ -17,6 +17,8 @@ neurokit2 = "^0.2.7"
 xgboost = "^2.0.3"
 deepdiff = "^6.7.1"
 pyyaml = "^6.0.1"
+pyprep = "^0.4.3"
+autoreject = "^0.4.3"
 
 
 [build-system]
