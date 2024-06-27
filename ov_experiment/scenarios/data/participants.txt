@@ -1,10 +1,10 @@
-P1 - Anuradha
-P2 - Jesse
-P3 -  Amanat - Need to redo it
-P4 -  Shareef
-P5 -  Bak
-P6 - Rishav
-P7 - Charlo
-P8 - Thuwan
-P9 - Omang 
-P10 - Tarik
+P1 - Anuradha                       33
+P2 - Jesse                          31
+P3 -  Amanat - Need to redo it      
+P4 -  Shareef                       32
+P5 -  Bak                           22
+P6 - Rishav                         22
+P7 - Charlo                         31
+P8 - Thuwan                         22
+P9 - Omang                          22
+P10 - Tarik - dropped
